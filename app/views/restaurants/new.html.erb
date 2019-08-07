@@ -1,0 +1,11 @@
+<div class="container">
+<h1>Add a Restaurant</h1>
+<%= simple_form_for @restaurant do |f| %>
+  <%= f.input :name, hint: 'Name is required' %>
+  <%= f.input :address, hint: 'Address is required' %>
+  <%= f.input :phone_number %>
+  <%= f.input :category, collection: Restaurant::CATEGORIES %>
+  <%= f.button :submit %>
+<% end %>
+</div>
+<%= link_to "Cancel", restaurants_path %>
