@@ -1,5 +1,52 @@
-<h1><%= @restaurant.name %></h1>
-<h2><%= @restaurant.category %></h2>
-<p><%= @restaurant.address %></p>
-<p><%= @restaurant.phone_number %></p>
 <%= link_to "Home", restaurants_path %>
+<div class="container">
+  <h1><%= @restaurant.name %></h1>
+  <h2><%= @restaurant.category %></h2>
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.phone_number %></p>
+  <h2>Reviews</h2>
+  <%= link_to "Leave a review", new_restaurant_review_path(params[:id]) %>
+  <% @restaurant.reviews.each do |review| %>
+    <div class="review-card">
+      <% case review.rating %>
+        <% when 1 %>
+          <i class="fas fa-star"></i> <!-- Solid star -->
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+        <% when 2 %>
+          <i class="fas fa-star"></i> <!-- Solid star -->
+          <i class="fas fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+        <% when 3 %>
+          <i class="fas fa-star"></i> <!-- Solid star -->
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+        <% when 4 %>
+          <i class="fas fa-star"></i> <!-- Solid star -->
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="far fa-star"></i>
+        <% when 5 %>
+          <i class="fas fa-star"></i> <!-- Solid star -->
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        <% else %>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+      <% end %>
+      <p><%= review.content %></p>
+    </div>
+  <% end %>
+</div>
